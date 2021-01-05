@@ -1,6 +1,6 @@
 CC=clang
 RM=rm -f
-FLAGS=-Wall -std=c99
+FLAGS=-Wall -std=c99 -O2 -O3 -O1
 
 SRC=tsfetch.c
 

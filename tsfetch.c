@@ -3,22 +3,7 @@
 #include <string.h>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
-#define BLK "\e[0;30m"
-#define RED "\e[0;31m"
-#define GRN "\e[0;32m"
-#define YLW "\e[0;33m"
-#define BLU "\e[0;34m"
-#define MGN "\e[0;35m"
-#define CYN "\e[0;36m"
-#define WHT "\e[0;37m"
-#define BLK2 "\e[0;90m"
-#define RED2 "\e[0;91m"
-#define GRN2 "\e[0;92m"
-#define YLW2 "\e[0;93m"
-#define BLU2 "\e[0;94m"
-#define MAG2 "\e[0;95m"
-#define CYN2 "\e[0;96m"
-#define WHT2 "\e[0;97m"
+#include "tsfetch.h"
 
 void trim_whitespaces(char* str){
     int i=0, start=0, end=strlen(str)-1;
@@ -111,6 +96,13 @@ char* get_shell(){
     return shell;
 }
 
+void check_getenv(char* env, char* label){
+    char* s = getenv(env);
+    if (s != NULL){
+        printf("%s:\t%s\n", label, s);
+    }
+}
+
 int main(){
     struct utsname osinfo;
     struct sysinfo mem;
@@ -122,19 +114,15 @@ int main(){
     char* cpu = get_cpu();
 
     printf("%s@%s\n", getenv("USER"), osinfo.nodename);
-    printf("Kernel\t%s %s\n", osinfo.sysname, osinfo.release);
-    printf("OS\t%s %s\n", osname,osinfo.machine);
-    printf("Uptime\t%s\n", uptime);
+    printf("Kernel:\t%s %s\n", osinfo.sysname, osinfo.release);
+    printf("OS:\t%s %s\n", osname,osinfo.machine);
+    printf("Uptime:\t%s\n", uptime);
     
-    printf("Shell\t%s\n", get_shell());
-    char* de = getenv("XDG_CURRENT_DESKTOP");
-    if (de != NULL){
-        printf("DE\t%s\n", de);
-    }
-    printf("Lang\t%s\n", getenv("LANG"));
-    
-    printf("Memory\t%lu/%lu MB\n", (mem.freeram)/1000000, mem.totalram/1000000);
-    printf("CPU\t%s\n", cpu);
+    printf("Shell:\t%s\n", get_shell());
+    check_getenv("XDG_CURRENT_DESKTOP", "DE");
+    check_getenv("LANG", "Lang"); 
+    printf("Memory:\t%lu/%lu MB\n", (mem.freeram)/1000000, mem.totalram/1000000);
+    printf("CPU:\t%s\n", cpu);
     
     // print colors
     printf(BLK"███"BLK);
