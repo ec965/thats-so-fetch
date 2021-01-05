@@ -5,7 +5,7 @@ FLAGS=-Wall -std=c99
 SRCS=fetch.c
 OBJS=$(subst .c,.o,$(SRCS))
 
-OUT=a.out
+OUT=tsfetch
 
 all: fetch
 
