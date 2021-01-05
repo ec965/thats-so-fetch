@@ -43,30 +43,30 @@ int main(){
         exit(0);
     };
 
-    printf("%s@%s\n", username,sys_info.nodename);
-    printf("Kernel: %s %s\n", sys_info.sysname, sys_info.release);
-    printf("OS: %s %s\n", os_string, sys_info.machine);
-    printf("Uptime: %s\n", time_string); // time in seconds
-    printf("CPU: %s", cpu_string);
-    printf("Memory: %lu/%lu MiB\n", (uptime_mem.freeram)/1000000, uptime_mem.totalram/1000000);
+    printf("%s@%s\n\n", username,sys_info.nodename);
+    printf("Kernel\t%s %s\n", sys_info.sysname, sys_info.release);
+    printf("OS\t%s %s\n", os_string, sys_info.machine);
+    printf("Uptime\t%s\n", time_string); // time in seconds
+    printf("CPU\t%s\n", cpu_string);
+    printf("Memory\t%lu/%lu MB\n\n", (uptime_mem.freeram)/1000000, uptime_mem.totalram/1000000);
 
     // print colors
-    printf("\e[0;30m██\e[0;30m");
-    printf("\e[0;31m██\e[0;31m");
-    printf("\e[0;32m██\e[0;32m");
-    printf("\e[0;33m██\e[0;33m");
-    printf("\e[0;34m██\e[0;34m");
-    printf("\e[0;35m██\e[0;35m");
-    printf("\e[0;36m██\e[0;36m");
-    printf("\e[0;37m██\e[0;37m\n");
-    printf("\e[0;90m██\e[0;90m");
-    printf("\e[0;91m██\e[0;91m");
-    printf("\e[0;92m██\e[0;92m");
-    printf("\e[0;93m██\e[0;93m");
-    printf("\e[0;94m██\e[0;94m");
-    printf("\e[0;95m██\e[0;95m");
-    printf("\e[0;96m██\e[0;96m");
-    printf("\e[0;97m██\e[0;97m\n");
+    printf("\e[0;30m███\e[0;30m");
+    printf("\e[0;31m███\e[0;31m");
+    printf("\e[0;32m███\e[0;32m");
+    printf("\e[0;33m███\e[0;33m");
+    printf("\e[0;34m███\e[0;34m");
+    printf("\e[0;35m███\e[0;35m");
+    printf("\e[0;36m███\e[0;36m");
+    printf("\e[0;37m███\e[0;37m\n");
+    printf("\e[0;90m███\e[0;90m");
+    printf("\e[0;91m███\e[0;91m");
+    printf("\e[0;92m███\e[0;92m");
+    printf("\e[0;93m███\e[0;93m");
+    printf("\e[0;94m███\e[0;94m");
+    printf("\e[0;95m███\e[0;95m");
+    printf("\e[0;96m███\e[0;96m");
+    printf("\e[0;97m███\e[0;97m\n");
 
     return 0;
 }
@@ -99,6 +99,35 @@ void trim_leading(char* str, char remove_char){
 void trim_trailing(char* str, char remove_char){
     int end = strlen(str)-1;
     while (str[end] == remove_char){
+        end--;
+    }
+    str[end+1] = '\0';
+}
+
+void trim_whitespaces(char* str){
+    int start = 0;
+    while(str[start]==' ' 
+        || str[start]=='\t' 
+        || str[start]=='\r' 
+        || str[start]=='\n')
+    {
+        start++;
+    }
+    if (start != 0){
+        int i=0;
+        while(str[i+start] != '\0'){
+            str[i] = str[i+start];
+            i++;
+        }
+        str[i] = '\0';
+    }
+
+    int end = strlen(str)-1;
+    while (str[end] == ' '
+        || str[end] == '\t'
+        || str[end] == '\n'
+        || str[end] == '\r')
+    {
         end--;
     }
     str[end+1] = '\0';
@@ -143,9 +172,8 @@ int extract_key_value(char* file_name, char* find_key, char* delimeter, char* ou
             return -1;
         }
 
-        trim_leading(key_buffer, ' ');
-        trim_trailing(key_buffer, ' ');
-        trim_trailing(key_buffer, '\t');
+        trim_whitespaces(key_buffer);
+        trim_whitespaces(val_buffer);
 
         if (strcmp(find_key, key_buffer) == 0){
             if (sprintf(output, "%s", val_buffer) < 0){

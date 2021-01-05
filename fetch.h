@@ -13,6 +13,11 @@ void trim_leading(char*, char);
 // trim the trailing characters from the string
 void trim_trailing(char*, char);
 
+// trim all trailing and leading whitespaces
+// this includes spaces, tabs, new lines, and carriage returns
+// ' ', '\t', '\n', '\r'
+void trim_whitespaces(char*);
+
 // takes a string that is a key value pair:
 // for example: NAME='Odie'
 // key and value will point to the resulting strings after delimination
