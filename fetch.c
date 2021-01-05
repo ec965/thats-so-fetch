@@ -50,6 +50,24 @@ int main(){
     printf("CPU: %s", cpu_string);
     printf("Memory: %lu/%lu MiB\n", (uptime_mem.freeram)/1000000, uptime_mem.totalram/1000000);
 
+    // print colors
+    printf("\e[0;30m██\e[0;30m");
+    printf("\e[0;31m██\e[0;31m");
+    printf("\e[0;32m██\e[0;32m");
+    printf("\e[0;33m██\e[0;33m");
+    printf("\e[0;34m██\e[0;34m");
+    printf("\e[0;35m██\e[0;35m");
+    printf("\e[0;36m██\e[0;36m");
+    printf("\e[0;37m██\e[0;37m\n");
+    printf("\e[0;90m██\e[0;90m");
+    printf("\e[0;91m██\e[0;91m");
+    printf("\e[0;92m██\e[0;92m");
+    printf("\e[0;93m██\e[0;93m");
+    printf("\e[0;94m██\e[0;94m");
+    printf("\e[0;95m██\e[0;95m");
+    printf("\e[0;96m██\e[0;96m");
+    printf("\e[0;97m██\e[0;97m\n");
+
     return 0;
 }
 
