@@ -8,7 +8,7 @@
 
 int main(){
     struct utsname sys_info;
-    char username[_SC_LOGIN_NAME_MAX];
+    char username[USERSTRING_MAX];
     struct sysinfo uptime_mem;
     char time_string[TIMESTRING_MAX];
     char os_string[OSSTRING_MAX];

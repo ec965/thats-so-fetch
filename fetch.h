@@ -1,4 +1,5 @@
 #pragma once
+#define USERSTRING_MAX 72
 #define TIMESTRING_MAX 12
 #define OSSTRING_MAX 62
 #define CPUSTRING_MAX 72
