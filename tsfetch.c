@@ -3,6 +3,22 @@
 #include <string.h>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
+#define BLK "\e[0;30m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YLW "\e[0;33m"
+#define BLU "\e[0;34m"
+#define MGN "\e[0;35m"
+#define CYN "\e[0;36m"
+#define WHT "\e[0;37m"
+#define BLK2 "\e[0;90m"
+#define RED2 "\e[0;91m"
+#define GRN2 "\e[0;92m"
+#define YLW2 "\e[0;93m"
+#define BLU2 "\e[0;94m"
+#define MAG2 "\e[0;95m"
+#define CYN2 "\e[0;96m"
+#define WHT2 "\e[0;97m"
 
 void trim_whitespaces(char* str){
     int i=0, start=0, end=strlen(str)-1;
@@ -119,24 +135,24 @@ int main(){
     
     printf("Memory\t%lu/%lu MB\n", (mem.freeram)/1000000, mem.totalram/1000000);
     printf("CPU\t%s\n", cpu);
-
+    
     // print colors
-    printf("\e[0;30m███\e[0;30m");
-    printf("\e[0;31m███\e[0;31m");
-    printf("\e[0;32m███\e[0;32m");
-    printf("\e[0;33m███\e[0;33m");
-    printf("\e[0;34m███\e[0;34m");
-    printf("\e[0;35m███\e[0;35m");
-    printf("\e[0;36m███\e[0;36m");
-    printf("\e[0;37m███\e[0;37m\n");
-    printf("\e[0;90m███\e[0;90m");
-    printf("\e[0;91m███\e[0;91m");
-    printf("\e[0;92m███\e[0;92m");
-    printf("\e[0;93m███\e[0;93m");
-    printf("\e[0;94m███\e[0;94m");
-    printf("\e[0;95m███\e[0;95m");
-    printf("\e[0;96m███\e[0;96m");
-    printf("\e[0;97m███\e[0;97m\n");
+    printf(BLK"███"BLK);
+    printf(RED"███"RED);
+    printf(GRN"███"GRN);
+    printf(YLW"███"YLW);
+    printf(BLU"███"BLU);
+    printf(MGN"███"MGN);
+    printf(CYN"███"CYN);
+    printf(WHT"███"WHT"\n");
+    printf(BLK2"███"BLK2);
+    printf(RED2"███"RED2);
+    printf(GRN2"███"GRN2);
+    printf(YLW2"███"YLW2);
+    printf(BLU2"███"BLU2);
+    printf(MAG2"███"MAG2);
+    printf(CYN2"███"CYN2);
+    printf(WHT2"███"WHT2"\n");
 
 
     free(uptime);
