@@ -2,17 +2,14 @@ CC=clang
 RM=rm -f
 FLAGS=-Wall -std=c99
 
-SRCS=fetch.c
-OBJS=$(subst .c,.o,$(SRCS))
+SRC=tsfetch.c
 
 OUT=tsfetch
 
 all: fetch
 
-fetch: $(OBJS)
-	$(CC) $(FLAGS) -o $(OUT) $(OBJS)
-
-fetch.o: fetch.c fetch.h
+fetch: $(SRC)
+	$(CC) $(FLAGS) -o $(OUT) $(SRC)
 
 clean:
 	$(RM) $(OBJS) $(OUT)
